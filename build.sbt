@@ -35,3 +35,5 @@ libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.2.3"
 resolvers += "Local Maven Repository" at ""+Path.userHome.asFile.toURI.toURL+".m2/repository"
 
 
+// append several options to the list of options passed to the Java compiler
+javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-g")
