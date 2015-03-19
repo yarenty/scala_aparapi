@@ -15,12 +15,19 @@ object main {
 
     SimpleAdd.addMe();
     
-   println("and try some kernel with structure copy");
+    println("and try some kernel with simple array copy");
     val cl = new MultiplicityKernel();
     
    // cl.init();
     
-    cl.go();
+    val in = Array.fill[Float](10){scala.util.Random.nextFloat*10}
+    // and go go go ;-)
+    val out = cl.go(in)
+    
+    println(in.mkString(", "))
+    println(out.mkString(", "))
+    
+    
     
   }
     

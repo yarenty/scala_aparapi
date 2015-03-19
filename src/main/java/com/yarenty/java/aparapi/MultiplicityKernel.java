@@ -19,16 +19,12 @@ public class MultiplicityKernel {
 //	
 	
 	
-	public void go() {
+	public float[] go(final float[] in) {
 		
-		final int size = 100;
-		final float in[] = new float[size]; // initialization of in[0..8191] omitted
-		final float out[] = new float[size]; //out[in.length];
+//		final int size = 100;
+//		final float in[] = new float[size]; // initialization of in[0..8191] omitted
+		final float out[] = new float[in.length]; //out[in.length];
 
-		for (int i=0; i< in.length; i++) {
-			in[i] = (float) Math.random();
-		}
-	
 		
 		Kernel kernel = new Kernel(){
 		   @Override public void run(){
@@ -42,10 +38,14 @@ public class MultiplicityKernel {
 		
 		if (!kernel.getExecutionMode().equals(Kernel.EXECUTION_MODE.GPU)){
 			   System.out.println("Kernel not execute on the GPU!");
+		} else {
+			System.out.println("Execution mode::" + kernel.getExecutionMode());
 		}
 		
 		
 		kernel.dispose();
+		
+		return out;
 	}
 	
 }
