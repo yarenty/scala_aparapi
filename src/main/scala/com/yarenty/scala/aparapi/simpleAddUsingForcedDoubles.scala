@@ -2,11 +2,10 @@ package com.yarenty.scala.aparapi
 
 import com.amd.aparapi.Kernel
 import com.amd.aparapi.Range
-
 import java.lang.Float
 import scala.collection.JavaConversions._
 
-object simpleAddUsingJavaFloats {
+object simpleAddUsingForcedDoubles {
 
   /**
    * NOT WORKING ON GPU:
@@ -49,13 +48,14 @@ object simpleAddUsingJavaFloats {
 
     val size = 512
 
-    val a = Array.fill[Float](size) { scala.util.Random.nextFloat }
-    val b = Array.fill[Float](size) { scala.util.Random.nextFloat }
+    val a: Seq[Double] = scala.Array.fill[Double](size) { scala.util.Random.nextDouble }
+    val b: Seq[Double] = scala.Array.fill[Double](size) { scala.util.Random.nextDouble }
 
-    var sum = Array.fill[Float](size)(0); // if not initialized like that - no JTP!!
+
+    var sum = Array.ofDim[Double](size); 
 
     val kernel = new Kernel() {
-      @Override
+      // @Override
       def run() {
         val gid = getGlobalId();
         sum(gid) = a(gid) + b(gid);

@@ -12,14 +12,14 @@ object main {
     checkJavaInfo
     //checkJavaSimpleKernel
     //checkJavaUsingTouple
-    //checkJavaComplicatedStructure
+    //checkJavaComplicatedStructure  //as it was expected is not working
     
     
     openclInfo.getInfo
 
-    //simpleAdd.addMe
-
-    simpleAddUsingJavaFloats.addMe
+    //simpleAdd.addMe // not working
+    //simpleAddUsingJavaFloats.addMe //not working
+    simpleAddUsingForcedDoubles.addMe
   }
 
   
